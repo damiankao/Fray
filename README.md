@@ -1,7 +1,7 @@
 Fray
 ====
 
-Demo: damiankao.github.io/Fray/index.html
+Demo: http://damiankao.github.io/Fray/index.html
 
 ### Description
 
