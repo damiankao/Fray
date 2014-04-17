@@ -1,0 +1,70 @@
+<html>
+<head>
+</head>
+<body>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="fray.js"></script>
+	<script>
+		var data = {tiles:[],grid:[]};
+		for (var row = 0 ; row < 12 ; row ++ ) {
+			var r = []
+			for (var col = 0 ; col < 12 ; col ++ ) {
+				var obj = {
+					row:row,
+					col:col,
+					type:Math.floor(Math.random() * 6),
+					round:1,
+					remove:true
+				};
+				r.push(obj);
+				data.tiles.unshift(obj);
+			}
+			data.grid.push(r);
+		}
+
+		var future = [];
+
+		for (var i = 0 ; i < 1000; i ++ ) {
+			future.push(Math.floor(Math.random() * 6));
+		}
+
+		data.future = future;
+		data.history = [];
+
+		var d = {};
+		d.board = data;
+
+		d.self = {
+			name:'John Doe',
+			class:'brawler',
+			maxHP:50,
+			currentHP:40,
+			selectors:5,
+			selectorsUsed:0,
+			forceTimer:5,
+			forcePenalty:1,
+			death:0.75,
+			conditions:[],
+			resources:[0,0,0,0,0,0]
+		};
+
+		d.opp = {
+			name:'Jane Doe',
+			class:'deceiver',
+			maxHP:40,
+			currentHP:35,
+			selectors:5,
+			forceTimer:5,
+			forcePenalty:1,
+			death:0.75,
+			conditions:[],
+			resources:[0,0,0,0,0,0]
+		};
+
+		var g = game(d3.select('body').append('div'))
+			.init(d,null,null);
+
+
+	</script>
+</body>
+</html>
